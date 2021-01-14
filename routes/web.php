@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use App\Http\Controllers\HelloController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,9 +34,23 @@ Route::get('/register', function() {
 })->name('register');
 
 Route::post('/register', function(Request $request) {
-    return "Un utilisateur a tenté de s'enregistrer";
+    //return "Un utilisateur a tenté de s'enregistrer";
+    $validatedData = $request->validate([
+        'pseudo' => 'required|max:255',
+        'email' => 'required|email|max:255', 
+        'password' => 'required|min:3|max:255',
+        'password-confirmation' => 'required|same:password'
+    ]);
+    // Si la fonction $request->validate échoue, une erreur est renvoyée et le code qui suit n'est pas executé
+    return "L'utilisateur " . $request['pseudo'] . " (" . $request->input('email') . ") a tenté de s'enregistrer, et a bien rempli le formulaire";
 });
 
+
+/*
 Route::get('/hello/{nom}', function ($nom) {
     return view('hello', ['name' => $nom]);
 });
+*/
+
+// On utilise maintenant le HelloController : 
+Route::get('/hello/{nom}', [HelloController::class, 'sayHello']);
