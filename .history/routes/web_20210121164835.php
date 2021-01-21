@@ -55,4 +55,4 @@ Route::put('/skills/{skill}', [SkillController::class, 'update'])->name('skills.
 Route::patch('/skills/{skill}', [SkillController::class, 'update'])->name('skills.update');
 Route::delete('/skills/{skill}', [SkillController::class, 'destroy'])->name('skills.delete');
 */
-Route::resource('skills', SkillController::class);
+Route::resource('skills', 'SkillController');

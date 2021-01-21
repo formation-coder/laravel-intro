@@ -60,16 +60,10 @@ class LoginController extends Controller
     /**
      * Permet à l'utilisateur de se déconnecter => désactive sa session coté serveur
      *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @return void
      */
-    public function logout(Request $request) {
-        Auth::logout();
-        $request->session()->invalidate(); // On ferme la session de l'utilisateur
-        /* Permet de générer de nouveau token pour l'utilisateur 
-            => l'ancien token permettant de communiquer avec l'application n'est plus valide
-        */ 
-        $request->session()->regenerateToken();     
-        return redirect('/');
+    public function logout() {
+
     }
+
 }

@@ -69,7 +69,6 @@ class LoginController extends Controller
         /* Permet de générer de nouveau token pour l'utilisateur 
             => l'ancien token permettant de communiquer avec l'application n'est plus valide
         */ 
-        $request->session()->regenerateToken();     
+        $request->session()->regenerateToken();     }
         return redirect('/');
-    }
 }

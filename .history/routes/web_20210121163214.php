@@ -45,14 +45,9 @@ Route::get('/hello/{nom}', function ($nom) {
 Route::get('/hello/{nom}', [HelloController::class, 'sayHello']);
 
 // ----------- Routes pour les compétence ---------------- //
-/*
 Route::get('/skills', [SkillController::class, 'index'])->name('skills.index');
 Route::get('/skills/create', [SkillController::class, 'create'])->name('skills.create');
 Route::post('/skills', [SkillController::class, 'store'])->name('skills.store');
-Route::get('/skills/{skill}', [SkillController::class, 'show'])->name('skills.show');
 Route::get('/skills/{skill}/edit', [SkillController::class, 'edit'])->name('skills.edit');
 Route::put('/skills/{skill}', [SkillController::class, 'update'])->name('skills.update');
 Route::patch('/skills/{skill}', [SkillController::class, 'update'])->name('skills.update');
-Route::delete('/skills/{skill}', [SkillController::class, 'destroy'])->name('skills.delete');
-*/
-Route::resource('skills', SkillController::class);
